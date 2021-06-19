@@ -8,9 +8,18 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State var memoTitle: [String] = ["Swift", "Java", "Python", "Ruby"]
     var body: some View {
-        Text("Hello, world!")
-            .padding()
+        NavigationView {
+            List(0 ..< memoTitle.count) { i in
+                NavigationLink(
+                    destination: NoteView(),
+                    label: {
+                        Text(memoTitle[i])
+                    })
+            }
+            .navigationTitle("まいんどまっぷ")
+        }
     }
 }
 
